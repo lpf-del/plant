@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="plants.dao.RelationshipMapper">
+    <insert id="addRelationship" parameterType="Relationship">
+        insert into plant.relationship(rult,Result)
+        values (#{rult},#{Result});
+    </insert>
+    <delete id="deleteRelationshipRyId" parameterType="int">
+        delete from plant.relationship where rid = #{rid}
+    </delete>
+    <update id="updateRelationship" parameterType="Relationship">
+        update plant.relationship
+        set rult = #{rult},Result = #{Result}
+        where rid = #{rid};
+    </update>
+    <select id="queryRelationshipById" resultType="Relationship">
+        select * from plant.relationship where rid = #{rid}
+    </select>
+    <select id="queryRelationshipByName" resultType="Relationship">
+        select * from plant.relationship where rult = #{rult}
+    </select>
+    <select id="queryAllRult" resultType="Relationship">
+        select * from plant.relationship
+    </select>
+    <select id="queryRelationshipByResult" resultType="Relationship">
+        select * from plant.relationship where Result = #{Result}
+    </select>
+</mapper>

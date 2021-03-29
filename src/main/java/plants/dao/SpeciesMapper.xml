@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="plants.dao.SpeciesMapper">
+    <insert id="addSpecies" parameterType="plants.pojo.Species">
+        insert into plant.species(sname)
+        values (#{sname});
+    </insert>
+    <delete id="deleteSpeciesRyId" parameterType="int">
+        delete from plant.species where sid = #{sid}
+    </delete>
+    <update id="updateSpecies" parameterType="plants.pojo.Species">
+        update plant.species
+        set sname = #{sname}
+        where sid = #{sid};
+    </update>
+    <select id="querySpeciesById" resultType="plants.pojo.Species">
+        select * from plant.species where sid = #{sid}
+    </select>
+    <select id="queryAllSpecies" resultType="plants.pojo.Species">
+        select * from plant.species
+    </select>
+    <select id="querySpeciesByName" resultType="plants.pojo.Species">
+        select * from plant.species where sname = #{sname}
+    </select>
+</mapper>
